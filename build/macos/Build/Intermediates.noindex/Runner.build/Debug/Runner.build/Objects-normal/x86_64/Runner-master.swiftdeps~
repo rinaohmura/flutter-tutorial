@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
-options: "9a1a92567da5ba281853eeb8aa848932366c22d4c906cd6a3183548b7eafb970"
-build_start_time: [1649674021, 186427116]
-build_end_time: [1649674029, 340495109]
-inputs:
-  "/Users/tanaka/Documents/workspace/hello_world/macos/Flutter/GeneratedPluginRegistrant.swift": [1649673995, 277114152]
-  "/Users/tanaka/Documents/workspace/hello_world/macos/Runner/AppDelegate.swift": [1648486804, 0]
-  "/Users/tanaka/Documents/workspace/hello_world/macos/Runner/MainFlutterWindow.swift": [1648486804, 0]
