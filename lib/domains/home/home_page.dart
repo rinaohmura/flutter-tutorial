@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/domains/todo/todo_page.dart';
+import 'package:hello_world/bnb_ab.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required title}) : super(key: key);
@@ -62,7 +62,7 @@ class MyHomePage extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const TodoPage(),
+                  builder: (context) => const BottomNavigationAndAppBar(),
                 ),
               ),
               child: const Text('スキップ'),

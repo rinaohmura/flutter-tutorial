@@ -4,12 +4,13 @@ class TodoPage extends StatefulWidget {
   const TodoPage({Key? key}) : super(key: key);
 
   @override
-  State<TodoPage> createState() => _TodoPageState();
+  State<TodoPage> createState() => TodoPageState();
 }
 
-class _TodoPageState extends State<TodoPage> {
+class TodoPageState extends State<TodoPage> {
   final List<String> _todoList = <String>[];
   final newTodoController = TextEditingController();
+  int selectedIndex = 0;
 
   @override
   void dispose() {
@@ -19,17 +20,7 @@ class _TodoPageState extends State<TodoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Todo'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          addModal(context);
-        },
-        child: const Icon(Icons.add),
-      ),
-      body: Center(
+    return Center(
         child: ListView.builder(
           itemCount: _todoList.length,
           itemBuilder: (BuildContext context, int index) {
@@ -39,7 +30,8 @@ class _TodoPageState extends State<TodoPage> {
             );
           },
         ),
-      ),
+      
+      
     );
   }
 
