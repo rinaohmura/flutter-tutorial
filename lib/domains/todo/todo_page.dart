@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hello_world/providers.dart';
 
-class TodoPage extends StatefulWidget {
+class TodoPage extends ConsumerStatefulWidget {
   const TodoPage({Key? key}) : super(key: key);
 
   @override
-  State<TodoPage> createState() => TodoPageState();
+  ConsumerState<TodoPage> createState() => TodoPageState();
 }
 
-class TodoPageState extends State<TodoPage> {
-  final List<String> _todoList = <String>[];
+class TodoPageState extends ConsumerState<TodoPage> {
+  final todoListNotifier = TodoListNotifier(); //インスタンスか！
   final newTodoController = TextEditingController();
-  int selectedIndex = 0;
 
   @override
   void dispose() {
@@ -20,18 +21,17 @@ class TodoPageState extends State<TodoPage> {
 
   @override
   Widget build(BuildContext context) {
+    final watcher = ref.watch(todoListNotifierProvider);
     return Center(
-        child: ListView.builder(
-          itemCount: _todoList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return TodoItem(
-              title: _todoList[index],
-              number: index + 1,
-            );
-          },
-        ),
-      
-      
+      child: ListView.builder(
+        itemCount: watcher.length,
+        itemBuilder: (BuildContext context, int index) {
+          return TodoItem(
+            title: watcher[index],
+            number: index + 1,
+          );
+        },
+      ),
     );
   }
 
@@ -59,9 +59,9 @@ class TodoPageState extends State<TodoPage> {
                   ),
                   OutlinedButton(
                       onPressed: () {
-                        setState(() {
-                          _todoList.add(newTodoController.text);
-                        });
+                        todoListNotifier.add(newTodoController.text);
+                        print(todoListNotifierProvider.notifier);
+                        // _todoList.add(newTodoController.text);
                       },
                       child: const Text('追加')),
                 ],

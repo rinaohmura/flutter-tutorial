@@ -35,6 +35,7 @@ class _BottomNavigationAndAppBarState extends State<BottomNavigationAndAppBar> {
       floatingActionButton: selectedIndex == 0
           ? FloatingActionButton(
               onPressed: () {
+                // todo.addModal(context);
                 todo.addModal(context);
               },
               child: const Icon(Icons.add),
